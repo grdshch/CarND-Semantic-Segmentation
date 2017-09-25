@@ -94,6 +94,10 @@ def gen_batch_function(data_folder, image_shape):
                 images.append(image)
                 gt_images.append(gt_image)
 
+                # augmented data - adding flipped images
+                images.append(np.fliplr(image))
+                gt_images.append(np.fliplr(gt_image))
+
             yield np.array(images), np.array(gt_images)
     return get_batches_fn
 
